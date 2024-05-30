@@ -1,49 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+*{
+    padding:0px;
+    margin:0px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+form{
+    margin-top:50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:500px;
+    align-items: center;
+}
+form div{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.user {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-}
-
-.user:last-child {
-    border-bottom: none;
-}
-
-.user button {
-    margin-top: 10px;
-}
-
-.task {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.task.completed {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-}
-
-.task.pending {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+.subm{
+    height:30px;
+    width:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

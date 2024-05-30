@@ -1,50 +1,48 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetchUsers();
+let arr = [0,0,0,0,0,0,0,0,0,0,0];
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(res => res.json())
+.then((res) => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(tar => tar.json())
+    .then((tar) => {
+        document.write("<div>TEST</div>")
+        console.log(tar)
+    
+    console.log(res);
+    res.forEach(element => {
+        document.write('ID: '+element.id);  
+        document.write('<br>')
+        document.write('Nombre: '+element.name); 
+        document.write('<br>')
+        document.write('Usuario: '+element.username); 
+        document.write('<br>')
+        document.write('Correo: '+element.email); 
+        document.write('<br>')
+        document.write('Sitio Web: '+element.website); 
+        document.write('<br>')
+        document.write('<button onclick="toggleTareas('+element.id+')">Ver Tareas</button>')
+        document.write('<div style="display:none;" id="tareas'+element.id+'">');
+        tar.forEach(tarea => {
+            if(tarea.userId==element.id){
+                document.write('<div style="display:flex;">')
+                if(tarea.completed){
+                    document.write('<div style="display:block;color:green;">'+tarea.id+'. '+tarea.title+'</div>')
+                }else{
+                    document.write('<div style="display:block;color:red;">'+tarea.id+'. '+tarea.title+'</div>')
+                }
+                document.write('</div>')
+            }
+        })
+        document.write('</div>');
+        document.write('<hr>')       
+    });});
 });
-
-function fetchUsers() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(users => displayUsers(users))
-        .catch(error => console.error('Error fetching users:', error));
-}
-
-function displayUsers(users) {
-    const userList = document.getElementById('userList');
-    userList.innerHTML = '';
-    users.forEach(user => {
-        const userDiv = document.createElement('div');
-        userDiv.className = 'user';
-        userDiv.innerHTML = `
-            <p><strong>ID:</strong> ${user.id}</p>
-            <p><strong>Nombre:</strong> ${user.name}</p>
-            <p><strong>Nombre de Usuario:</strong> ${user.username}</p>
-            <p><strong>Email:</strong> ${user.email}</p>
-            <p><strong>Sitio Web:</strong> <a href="http://${user.website}" target="_blank">${user.website}</a></p>
-            <button onclick="fetchTasks(${user.id})">Ver Tareas</button>
-        `;
-        userList.appendChild(userDiv);
-    });
-}
-
-function fetchTasks(userId) {
-    fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
-        .then(response => response.json())
-        .then(tasks => displayTasks(tasks))
-        .catch(error => console.error('Error fetching tasks:', error));
-}
-
-function displayTasks(tasks) {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = '';
-    tasks.forEach(task => {
-        const taskDiv = document.createElement('div');
-        taskDiv.className = `task ${task.completed ? 'completed' : 'pending'}`;
-        taskDiv.innerHTML = `
-            <p><strong>ID:</strong> ${task.id}</p>
-            <p><strong>Título:</strong> ${task.title}</p>
-            <p><strong>Completada:</strong> ${task.completed ? 'Sí' : 'No'}</p>
-        `;
-        taskList.appendChild(taskDiv);
-    });
+function toggleTareas(id){
+    if(arr[id]==0){
+        document.getElementById('tareas'+id).style="display:block";
+        arr[id]=1;
+    }else{
+        document.getElementById('tareas'+id).style="display:none";
+        arr[id]=0;
+    }    
 }
