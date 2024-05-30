@@ -37,10 +37,10 @@ function validarFormulario() {
     if (valido) {
         mensaje.textContent = "Formulario válido!";
         mensaje.className = "mensaje-exito";
-        mensaje.style.display = "green"; 
+        mensaje.style.color = "green"; 
     } else {
         mensaje.innerHTML = errores.join("<br>");
         mensaje.className = "mensaje-error";
-        mensaje.style.display = "red"; 
+        mensaje.style.color = "red"; 
     }
 }
