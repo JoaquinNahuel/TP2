@@ -1,11 +1,13 @@
 mas texto
 lineas
-textomas texto
+2 lineas
+otras mas
+linea nueva
+mas texto
 lineas
 texto
 mas texto
 lineas
-textomas texto
-mas texto
-lineas
-textomas texto
+2 lineas
+otras mas
+linea nueva
